@@ -74,18 +74,18 @@ neon-tac-toe-ai/
 └── README.md            # Documentation
 ```
 ---
-**How it Works**
-User Move: When a player clicks a cell, JavaScript sends the board state to the Python Backend via an API call.
+## How it Works
+**User Move:** When a player clicks a cell, JavaScript sends the board state to the Python Backend via an API call.
 
-Server Processing: * The Python script validates the move.
+**Server Processing:** * The Python script validates the move.
 
 Checks for a winner or draw.
 
 If it's the Bot's turn, the Minimax Algorithm calculates the best possible move.
 
-Response: The server returns the updated board and game status to the frontend.
+**Response:** The server returns the updated board and game status to the frontend.
 
-Update: The UI updates instantly, playing sound effects and animations.
+**Update:** The UI updates instantly, playing sound effects and animations.
 
-**👨‍💻 Author**
-**Avantar** A Fun Side Project created for learning and experimentation.
+## 👨‍💻 Author
+**Avantar Nikhare** A Fun Side Project created for learning and experimentation.
