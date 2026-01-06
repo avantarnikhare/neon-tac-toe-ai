@@ -72,8 +72,8 @@ neon-tac-toe-ai/
 ├── requirements.txt     # Python Dependencies
 ├── vercel.json          # Deployment Config
 └── README.md            # Documentation
+```
 ---
-**Play!**
 How it Works
 User Move: When a player clicks a cell, JavaScript sends the board state to the Python Backend via an API call.
 
