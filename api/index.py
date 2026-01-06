@@ -7,7 +7,7 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 # --- GAME LOGIC ---
 
 def check_winner(board, player):
-    # Sabhi winning conditions check karo
+    #  winning conditions check 
     win_conditions = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], # Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
@@ -58,7 +58,6 @@ def process_move():
         mode = data['mode']
         level = data['level']
 
-        # 1. PEHLE CHECK KARO: Kya koi Human jeet gaya?
         # (Check both X and O because in Human mode, O is a person)
         if check_winner(board, 'X'):
             return jsonify({'board': board, 'winner': 'X', 'gameOver': True})
@@ -69,7 +68,7 @@ def process_move():
         if is_board_full(board):
             return jsonify({'board': board, 'winner': 'Draw', 'gameOver': True})
 
-        # 2. AI TURN (Sirf tab chalega agar Mode 'ai' hai)
+        # 2. AI TURN 
         if mode == 'ai':
             move = -1
             available = get_available_moves(board)
