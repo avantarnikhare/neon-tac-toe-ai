@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Tac Toe </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="intro-overlay">
+        <h1 class="intro-text">A FUN SIDE PROJECT BY <br> <span class="avantar-name">AVANTAR</span></h1>
+        <p class="intro-sub">Built for Learning & Experimentation</p>
+    </div>
+
+    <div id="app-content" class="hidden-content">
+        
+        <div class="container" id="start-screen">
+            <h1 class="logo">NEON <span class="flicker">TAC</span> TOE</h1>
+            <p class="subtitle">Just for Fun & Code</p>
+            
+            <div class="mode-select">
+                <button class="mode-btn active" onclick="selectMode('human')" id="btn-human">Vs Friend</button>
+                <button class="mode-btn" onclick="selectMode('ai')" id="btn-ai">Vs Bot</button>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="playerXInput" placeholder="Add Your Name">
+            </div>
+
+            <div class="input-group" id="player-o-group">
+                <input type="text" id="playerOInput" placeholder="Enter Friend's Name">
+            </div>
+
+            <div class="input-group hidden" id="ai-difficulty-group">
+                <select id="difficultyLevel">
+                    <option value="hard" selected>Hard (Challenge)</option>
+                    <option value="medium">Medium</option>
+                    <option value="easy">Easy</option>
+                </select>
+            </div>
+
+            <button class="start-btn" onclick="startGame()">LAUNCH GAME</button>
+            
+            <div class="footer-credit">
+                Designed & Developed by <span style="color:#00f3ff">Avantar</span><br>
+                <span style="font-size: 0.6rem; color: #666;">(This is a fun experimental project)</span>
+            </div>
+        </div>
+
+        <div class="container hidden" id="game-screen">
+            
+            <div class="scoreboard">
+                <div class="score-box">
+                    <span class="score-label">YOU</span>
+                    <span id="score-x" class="score-num">0</span>
+                </div>
+                <div class="score-box">
+                    <span class="score-label">DRAWS</span>
+                    <span id="score-draw" class="score-num">0</span>
+                </div>
+                <div class="score-box">
+                    <span class="score-label">BOT</span>
+                    <span id="score-o" class="score-num">0</span>
+                </div>
+            </div>
+
+            <div class="header">
+                <div class="player-badge active-turn" id="badge-x">
+                    <span class="p-label">X</span>
+                    <span id="name-x-display" class="p-name">You</span>
+                </div>
+                <div class="player-badge" id="badge-o">
+                    <span class="p-label">O</span>
+                    <span id="name-o-display" class="p-name">Bot</span>
+                </div>
+            </div>
+
+            <div id="status-msg" class="status-box hidden">⚡ Bot Thinking...</div>
+
+            <div class="game-board" id="board">
+                <div class="cell" onclick="makeMove(0)"></div>
+                <div class="cell" onclick="makeMove(1)"></div>
+                <div class="cell" onclick="makeMove(2)"></div>
+                <div class="cell" onclick="makeMove(3)"></div>
+                <div class="cell" onclick="makeMove(4)"></div>
+                <div class="cell" onclick="makeMove(5)"></div>
+                <div class="cell" onclick="makeMove(6)"></div>
+                <div class="cell" onclick="makeMove(7)"></div>
+                <div class="cell" onclick="makeMove(8)"></div>
+            </div>
+
+            <button class="reset-btn" onclick="backToMenu()">EXIT GAME</button>
+        </div>
+    </div>
+
+    <div id="winner-modal" class="modal hidden">
+        <div class="modal-content small-popup">
+            <h2 id="winnerText">WINNER!</h2>
+            <button class="restart-btn" onclick="resetBoard()">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
