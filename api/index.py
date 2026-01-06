@@ -19,7 +19,6 @@ def is_board_full(board):
 def get_available_moves(board):
     return [i for i, x in enumerate(board) if x == ""]
 
-# Minimax (For AI)
 def minimax(board, depth, is_maximizing):
     if check_winner(board, 'O'): return 10 - depth
     if check_winner(board, 'X'): return depth - 10
@@ -53,70 +52,44 @@ def process_move():
     mode = data['mode']
     level = data['level']
 
-    # *** FIX: CHECK BOTH PLAYERS FOR WIN ***
-    # Human mode me O bhi jeet sakta hai, isliye dono check karo
     if check_winner(board, 'X'):
         return jsonify({'board': board, 'winner': 'X', 'gameOver': True})
-    
+
     if check_winner(board, 'O'):
         return jsonify({'board': board, 'winner': 'O', 'gameOver': True})
-    
+
     if is_board_full(board):
         return jsonify({'board': board, 'winner': 'Draw', 'gameOver': True})
 
-    # --- AI LOGIC (Only runs if mode is AI) ---
     if mode == 'ai':
         move = -1
         available = get_available_moves(board)
-        
-        if not available:
-             return jsonify({'board': board, 'winner': 'Draw', 'gameOver': True})
 
-        # Easy: Random
         if level == 'easy':
             move = random.choice(available)
-        
-        # Medium: Block or Random
+
         elif level == 'medium':
-            if random.random() > 0.5:
-                for m in available:
-                    board[m] = 'O'
-                    if check_winner(board, 'O'): move = m; board[m] = ""; break
+            for m in available:
+                board[m] = 'X'
+                if check_winner(board, 'X'):
+                    move = m
                     board[m] = ""
-                if move == -1:
-                    for m in available:
-                        board[m] = 'X'
-                        if check_winner(board, 'X'): move = m; board[m] = ""; break
-                        board[m] = ""
-                if move == -1:
-                    move = random.choice(available)
-            else:
+                    break
+                board[m] = ""
+            if move == -1:
                 move = random.choice(available)
 
-        # Hard: Minimax
         elif level == 'hard':
-            # 85% Perfect, 15% Mistake chance
-            if random.random() > 0.15: 
-                best_score = -float('inf')
-                for m in available:
-                    board[m] = 'O'
-                    score = minimax(board, 0, False)
-                    board[m] = ""
-                    if score > best_score:
-                        best_score = score
-                        move = m
-            else:
-                move = random.choice(available)
+            best_score = -float('inf')
+            for m in available:
+                board[m] = 'O'
+                score = minimax(board, 0, False)
+                board[m] = ""
+                if score > best_score:
+                    best_score = score
+                    move = m
 
-        # Apply AI Move
         if move != -1:
             board[move] = 'O'
-            if check_winner(board, 'O'):
-                return jsonify({'board': board, 'winner': 'O', 'gameOver': True})
-            if is_board_full(board):
-                return jsonify({'board': board, 'winner': 'Draw', 'gameOver': True})
 
     return jsonify({'board': board, 'winner': None, 'gameOver': False})
-
-if __name__ == '__main__':
-    app.run(debug=True)
