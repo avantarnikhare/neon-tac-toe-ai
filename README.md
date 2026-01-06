@@ -8,7 +8,7 @@
 > A futuristic, cyberpunk-styled Tic-Tac-Toe game powered by a robust Python (Flask) backend and deployed on Vercel.
 
 ## 🎮 Live Demo
-**[Click Here to Play](https://your-project-url.vercel.app)** *(Replace with your actual Vercel link after deployment)*
+**[Click Here to Play]([https://your-project-url.vercel.app](https://neon-tac-toe-ai.vercel.app/))** *()*
 
 ---
 
@@ -73,6 +73,7 @@ neon-tac-toe-ai/
 ├── vercel.json          # Deployment Config
 └── README.md            # Documentation
 ---
+**Play!**
 How it Works
 User Move: When a player clicks a cell, JavaScript sends the board state to the Python Backend via an API call.
 
