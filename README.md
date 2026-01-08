@@ -39,7 +39,7 @@ If you want to run this project on your machine, follow these steps:
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/neon-tac-toe-ai.git](https://github.com/YOUR_USERNAME/neon-tac-toe-ai.git)
+    git clone [https://github.com/avanternikhare/neon-tac-toe-ai.git](https://github.com/avantarnikhare/neon-tac-toe-ai.git)
     cd neon-tac-toe-ai
     ```
 
