@@ -8,7 +8,7 @@
 > A futuristic, cyberpunk-styled Tic-Tac-Toe game powered by a robust Python (Flask) backend and deployed on Vercel.
 
 ## 🎮 Live Demo
-**[Click Here to Play]([https://your-project-url.vercel.app](https://neon-tac-toe-ai.vercel.app/))** *()*
+**[Click Here to Play]([https://your-project-url.vercel.app](https://neon-tac-toe-ai.vercel.app/))** *(https://neon-tac-toe-ai.vercel.app/)*
 
 ---
 
